@@ -1,0 +1,145 @@
+@font-face {
+  font-family: 'Work Sans';
+  src: url('./assets/fonts/WorkSans-VariableFont_wght.ttf');
+  Weights: 400, 600, 700;
+}
+
+:root {
+  --White: hsl(0, 0%, 100%);
+  --Light-pink: hsl(275, 100%, 97%);
+  --Grayish-purple: hsl(292, 16%, 49%);
+  --Dark-purple: hsl(292, 42%, 14%);
+
+  --ff-base: 'Work Sans';
+
+  --fs-300: 1rem;
+
+  --fw-regular: 400;
+  --fw-bold: 600;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+*,
+body {
+  margin: 0;
+}
+
+body {
+  height: 100dvh;
+  background: var(--Light-pink);
+  font-family: var(--ff-base);
+  color: var(--Dark-purple);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+picture {
+  position: absolute;
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+}
+
+main {
+  --spacing: 1.5rem;
+  --content-spacing: 1rem;
+
+  display: grid;
+  place-items: center;
+  padding: 9rem var(--spacing);
+}
+
+
+.card {
+  z-index: 1;
+  display: grid;
+  gap: var(--spacing);
+  padding: var(--spacing);
+  border-radius: .5rem;
+  background: var(--White);
+  max-width: 600px;
+}
+
+.card .card-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+  font-size: 2rem;
+}
+
+.card .card-title .card-title-icon {
+  width: 1.5rem;
+}
+
+.card .card-content {
+  display: grid;
+  gap: var(--spacing);
+}
+
+.card .card-content .card-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  font-weight: var(--fw-bold);
+}
+
+.card .card-content .card-question:hover {
+  color: purple
+}
+
+.card .card-content .card-question:not(:first-child) {
+  padding-top: var(--spacing);
+  border-top: 1px solid var(--Light-pink);
+}
+
+.card .card-content .card-question .card-question-icon {
+  background: url('./assets/images/icon-plus.svg');
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.card .card-content .card-question[data-open="true"] .card-question-icon {
+  background: url('./assets/images/icon-minus.svg');
+  background-repeat: no-repeat;
+}
+
+.card .card-content .card-question+.card-answer {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--Grayish-purple);
+  display: none;
+  opacity: 0;
+  transition-property: display opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-behavior: allow-discrete;
+}
+
+.card .card-content .card-question[data-open="true"]+.card-answer {
+  display: block;
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
