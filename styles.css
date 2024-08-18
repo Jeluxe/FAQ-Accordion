@@ -52,7 +52,7 @@ picture {
 
 img {
   width: 100%;
-  max-height: 250px;
+  max-height: 36.5vh;
   object-fit: cover;
 }
 
@@ -99,10 +99,11 @@ main {
   justify-content: space-between;
   gap: 2.5rem;
   font-weight: var(--fw-bold);
+  cursor: pointer;
 }
 
-.card .card-content .card-question:hover {
-  color: purple
+.card .card-content .card-question:is(:hover, :focus) {
+  color: hsl(279, 80%, 55%);
 }
 
 .card .card-content .card-question:not(:first-child) {
